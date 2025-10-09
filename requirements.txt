@@ -1,6 +1,7 @@
 streamlit
 ultralytics
+opencv-python-headless
 joblib
 numpy
-opencv-python
 pandas
+Pillow
