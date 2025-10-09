@@ -1,0 +1,43 @@
+Shape: 100 rows x 11 cols
+
+Missing values per column:
+experience    0
+taste         0
+adventure     0
+style         0
+main_ing      0
+avoid         0
+texture       0
+fullness      0
+companion     0
+impression    0
+target        0
+
+
+Target distribution:
+target
+คอร์สปลาเน้นสดชื่น               49
+คอร์สเนื้อวัวเข้มข้น             19
+คอร์สหรูหราพิเศษ                 19
+คอร์สเซอร์ไพรส์เชฟ                8
+คอร์สผักและวัตถุดิบสร้างสรรค์     5
+
+
+Rare-category mapping (min_freq = 3):
+
+5-fold CV accuracy: mean=0.780, std=0.068
+
+=== Training Summary (OHE + RF balanced) ===
+Holdout Test Accuracy: 0.750
+
+                               precision    recall  f1-score   support
+
+           คอร์สปลาเน้นสดชื่น       0.82      0.90      0.86        10
+คอร์สผักและวัตถุดิบสร้างสรรค์       0.00      0.00      0.00         1
+             คอร์สหรูหราพิเศษ       0.67      0.50      0.57         4
+           คอร์สเซอร์ไพรส์เชฟ       0.00      0.00      0.00         1
+         คอร์สเนื้อวัวเข้มข้น       0.80      1.00      0.89         4
+
+                     accuracy                           0.75        20
+                    macro avg       0.46      0.48      0.46        20
+                 weighted avg       0.70      0.75      0.72        20

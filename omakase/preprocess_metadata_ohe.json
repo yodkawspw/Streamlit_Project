@@ -1,0 +1,39 @@
+{
+  "rename_cols": {
+    "วันนี้คุณอยากได้ประสบการณ์แบบไหน?": "experience",
+    "คุณชอบรสชาติในแนวไหนมากที่สุด?": "taste",
+    "ระดับความผจญภัยของคุณในการลองเมนูใหม่ ๆ": "adventure",
+    "ถ้าให้เลือกระหว่าง 'ดั้งเดิม' กับ 'สร้างสรรค์' คุณอยากได้สไตล์มากกว่ากัน?": "style",
+    "เนื้อสัตว์หรือวัตถุดิบหลักที่คุณชอบที่สุด?": "main_ing",
+    "วัตถุดิบที่คุณไม่อยากเจอในคอร์สนี้?": "avoid",
+    "คุณชอบเนื้อสัมผัสของอาหารแบบไหนเป็นพิเศษ": "texture",
+    "คุณคาดหวังความอิ่มจากคอร์สมื้อนี้แค่ไหน?": "fullness",
+    "มื้อนี้คุณมาทานกับใคร?": "companion",
+    "ถ้าให้เลือกความประทับใจหลังจบมื้อ คุณอยากให้เชฟทำให้คุณรู้สึกแบบไหน?": "impression",
+    "คอร์สโอมากาเสะที่คุณเลือก/เหมาะสมที่สุด": "target"
+  },
+  "min_freq_for_rare": 3,
+  "rare_values": {},
+  "categorical_features": [
+    "experience",
+    "taste",
+    "adventure",
+    "style",
+    "main_ing",
+    "avoid",
+    "texture",
+    "fullness",
+    "companion",
+    "impression"
+  ],
+  "rf_params": {
+    "n_estimators": 1000,
+    "max_depth": 10,
+    "class_weight": "balanced",
+    "random_state": 42,
+    "n_jobs": -1
+  },
+  "cv_accuracy_mean": 0.78,
+  "cv_accuracy_std": 0.0678232998312527,
+  "holdout_accuracy": 0.75
+}

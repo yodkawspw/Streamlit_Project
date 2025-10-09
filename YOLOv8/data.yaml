@@ -1,0 +1,6 @@
+train: /content/drive/MyDrive/YOLOv8/train
+val: /content/drive/MyDrive/YOLOv8/valid
+test: /content/drive/MyDrive/YOLOv8/test
+
+nc: 3
+names: ['can','glass_bottle','plastic_bottle']
