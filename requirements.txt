@@ -1,0 +1,6 @@
+streamlit
+ultralytics
+joblib
+numpy
+opencv-python
+pandas
