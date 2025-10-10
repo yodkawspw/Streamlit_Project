@@ -7,6 +7,9 @@ import numpy as np
 from io import BytesIO
 import time
 
+# ---------- ตั้งค่า Streamlit ----------
+st.set_page_config(page_title="Image Detection", page_icon="🔎", layout="centered")
+
 # ---------- YOLO import (กัน error cv2) ----------
 try:
     from ultralytics import YOLO
@@ -20,9 +23,6 @@ except Exception as e:
     st.stop()
 
 import cv2  # import หลังจาก YOLO จะปลอดภัยกว่า
-
-# ---------- ตั้งค่า Streamlit ----------
-st.set_page_config(page_title="Image Detection", page_icon="🔎", layout="centered")
 
 # ---------- Background Image & CSS ----------
 st.markdown("""
