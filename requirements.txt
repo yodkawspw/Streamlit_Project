@@ -3,11 +3,11 @@ streamlit==1.37.0
 Pillow
 
 # --- Machine Learning ---
-ultralytics==8.2.85
+ultralytics==8.0.196
 scikit-learn==1.5.2
 joblib
 pandas
 numpy<2.3.0
 
 # --- Image Processing (Headless) ---
-opencv-python-headless==4.9.0.80
+opencv-python-headless==4.8.1.78
