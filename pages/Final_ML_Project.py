@@ -34,7 +34,7 @@ with st.spinner("🔄 Loading YOLO model..."):
     try:
         from ultralytics import YOLO
         time.sleep(1)  # simulate load time for smoother UX
-        st.toast("✅ YOLO imported successfully!", icon="✅")
+        st.toast("✅ YOLO imported successfully!")
     except Exception as e:
         st.error("🚨 YOLO import failed.")
         st.exception(e)
