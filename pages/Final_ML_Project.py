@@ -1,12 +1,21 @@
 # streamlit_app.py
 import streamlit as st
 from PIL import Image
-from ultralytics import YOLO
 import tempfile
 import os
-import cv2
 import numpy as np
-from io import BytesIO  # สำหรับบันทึกไฟล์ชั่วคราวใน memory
+from io import BytesIO
+
+# ---------- YOLO import (กัน error cv2) ----------
+try:
+    from ultralytics import YOLO
+    st.success("✅ YOLO imported successfully!")
+except Exception as e:
+    st.error("🚨 YOLO import failed.")
+    st.exception(e)
+    st.stop()
+
+import cv2  # import หลังจาก YOLO จะปลอดภัยกว่า
 
 # ---------- ตั้งค่า Streamlit ----------
 st.set_page_config(page_title="Image Detection", page_icon="🔎", layout="centered")
@@ -21,7 +30,12 @@ st.markdown("""
 }
 h1 { color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.6); }
 .stImage > figcaption { text-align: center; font-weight: 600; color: #374151; }
-div.stFileUploader > label > div[data-testid="stFileUploadDropzone"] { border: 2px dashed #ef4444; border-radius: 12px; padding: 1rem; background-color: rgba(255,255,255,0.9); }
+div.stFileUploader > label > div[data-testid="stFileUploadDropzone"] {
+    border: 2px dashed #ef4444;
+    border-radius: 12px;
+    padding: 1rem;
+    background-color: rgba(255,255,255,0.9);
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -30,7 +44,7 @@ BASE_DIR = os.path.dirname(__file__)
 model_path = os.path.join(BASE_DIR, "..", "YOLOv8", "runs", "detect", "train", "weights", "best.pt")
 
 if not os.path.exists(model_path):
-    st.error(f"ไม่พบไฟล์โมเดล: {model_path}")
+    st.error(f"❌ ไม่พบไฟล์โมเดล: {model_path}")
     st.stop()
 
 model = YOLO(model_path)
@@ -44,7 +58,6 @@ uploaded_file = st.file_uploader("เลือกภาพของคุณ..."
 
 if uploaded_file is not None:
     img = Image.open(uploaded_file).convert("RGB")
-
     st.write("---")
 
     # บันทึกรูปชั่วคราว
@@ -83,4 +96,3 @@ if uploaded_file is not None:
 
     # ลบไฟล์ชั่วคราว
     os.remove(temp_path)
-    st.markdown('</div>', unsafe_allow_html=True)
