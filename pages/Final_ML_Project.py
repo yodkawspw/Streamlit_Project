@@ -10,20 +10,6 @@ import time
 # ---------- ตั้งค่า Streamlit ----------
 st.set_page_config(page_title="Image Detection", page_icon="🔎", layout="centered")
 
-# ---------- YOLO import (กัน error cv2) ----------
-try:
-    from ultralytics import YOLO
-    msg = st.empty()
-    msg.success("✅ YOLO imported successfully!")
-    time.sleep(2)  # show success for 2 seconds
-    msg.empty()     # remove it
-except Exception as e:
-    st.error("🚨 YOLO import failed.")
-    st.exception(e)
-    st.stop()
-
-import cv2  # import หลังจาก YOLO จะปลอดภัยกว่า
-
 # ---------- Background Image & CSS ----------
 st.markdown("""
 <style>
@@ -42,6 +28,19 @@ div.stFileUploader > label > div[data-testid="stFileUploadDropzone"] {
 }
 </style>
 """, unsafe_allow_html=True)
+
+# ---------- YOLO import (กัน error cv2) ----------
+with st.spinner("🔄 Loading YOLO model..."):
+    try:
+        from ultralytics import YOLO
+        time.sleep(1)  # simulate load time for smoother UX
+        st.toast("✅ YOLO imported successfully!", icon="✅")
+    except Exception as e:
+        st.error("🚨 YOLO import failed.")
+        st.exception(e)
+        st.stop()
+
+import cv2  # import หลังจาก YOLO จะปลอดภัยกว่า
 
 # ---------- โหลด YOLOv8 model ----------
 BASE_DIR = os.path.dirname(__file__)
