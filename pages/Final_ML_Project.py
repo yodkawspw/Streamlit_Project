@@ -6,6 +6,8 @@ import os
 import numpy as np
 from io import BytesIO
 
+print("NumPy version:", np.__version__)
+
 # ---------- YOLO import (กัน error cv2) ----------
 try:
     from ultralytics import YOLO
