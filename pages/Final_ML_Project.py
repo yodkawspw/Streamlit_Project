@@ -9,7 +9,10 @@ from io import BytesIO
 # ---------- YOLO import (กัน error cv2) ----------
 try:
     from ultralytics import YOLO
-    st.success("✅ YOLO imported successfully!")
+    msg = st.empty()
+    msg.success("✅ YOLO imported successfully!")
+    time.sleep(2)  # show success for 2 seconds
+    msg.empty()     # remove it
 except Exception as e:
     st.error("🚨 YOLO import failed.")
     st.exception(e)
