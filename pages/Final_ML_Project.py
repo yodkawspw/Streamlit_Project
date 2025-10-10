@@ -1,19 +1,10 @@
-# --------------------------
-# Final_ML_Project.py
-# --------------------------
-
+# streamlit_app.py
 import streamlit as st
-
-# ---------- ตั้งค่า Streamlit ----------
-st.set_page_config(page_title="Image Detection", page_icon="🔎", layout="centered")
-
 from PIL import Image
 import tempfile
 import os
 import numpy as np
 from io import BytesIO
-
-print("NumPy version:", np.__version__)
 
 # ---------- YOLO import (กัน error cv2) ----------
 try:
@@ -25,6 +16,9 @@ except Exception as e:
     st.stop()
 
 import cv2  # import หลังจาก YOLO จะปลอดภัยกว่า
+
+# ---------- ตั้งค่า Streamlit ----------
+st.set_page_config(page_title="Image Detection", page_icon="🔎", layout="centered")
 
 # ---------- Background Image & CSS ----------
 st.markdown("""
@@ -71,15 +65,13 @@ if uploaded_file is not None:
         temp_path = tmp_file.name
         img.save(temp_path)
 
-    # ใช้ YOLO แบบ headless-safe
+    # ตรวจจับขยะ
     results = model.predict(source=temp_path)
 
-    # แปลงผลเป็น PIL Image แสดงบน Streamlit
-    annotated_img = results[0].plot()                 # NumPy array
+    # แปลง BGR → RGB → PIL
+    annotated_img = results[0].plot()
     annotated_img_rgb = cv2.cvtColor(annotated_img, cv2.COLOR_BGR2RGB)
     annotated_img_pil = Image.fromarray(annotated_img_rgb)
-    st.image(annotated_img_pil, use_container_width=True)
-
 
     # แสดงรูปซ้าย-ขวา
     col1, col2 = st.columns(2)
