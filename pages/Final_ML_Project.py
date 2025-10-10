@@ -5,6 +5,7 @@ import tempfile
 import os
 import numpy as np
 from io import BytesIO
+import time
 
 # ---------- YOLO import (กัน error cv2) ----------
 try:
