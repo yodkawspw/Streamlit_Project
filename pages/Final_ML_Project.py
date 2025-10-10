@@ -71,11 +71,10 @@ if uploaded_file is not None:
         temp_path = tmp_file.name
         img.save(temp_path)
 
-    # ตรวจจับขยะ
+    # ใช้ YOLO แบบ headless-safe
     results = model.predict(source=temp_path)
 
-    # แปลงผล YOLO เป็น NumPy → PIL → st.image
-    results = model.predict(source=temp_path)
+    # แปลงผลเป็น PIL Image แสดงบน Streamlit
     annotated_img = results[0].plot()                 # NumPy array
     annotated_img_rgb = cv2.cvtColor(annotated_img, cv2.COLOR_BGR2RGB)
     annotated_img_pil = Image.fromarray(annotated_img_rgb)
