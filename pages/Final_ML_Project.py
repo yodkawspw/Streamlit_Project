@@ -74,12 +74,13 @@ if uploaded_file is not None:
     # ตรวจจับขยะ
     results = model.predict(source=temp_path)
 
-    # แปลง BGR → RGB → PIL
-    # แปลงผลจาก YOLO เป็น array แล้วเป็น PIL Image
-    annotated_img = results[0].plot()  # array
+    # แปลงผล YOLO เป็น NumPy → PIL → st.image
+    results = model.predict(source=temp_path)
+    annotated_img = results[0].plot()                 # NumPy array
     annotated_img_rgb = cv2.cvtColor(annotated_img, cv2.COLOR_BGR2RGB)
     annotated_img_pil = Image.fromarray(annotated_img_rgb)
     st.image(annotated_img_pil, use_container_width=True)
+
 
     # แสดงรูปซ้าย-ขวา
     col1, col2 = st.columns(2)
