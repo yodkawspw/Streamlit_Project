@@ -1,8 +1,8 @@
-streamlit
+streamlit==1.37.0
 ultralytics==8.2.50
-opencv-python-headless==4.10.0.84
-joblib
+opencv-python-headless==4.8.1.78
 numpy==1.26.4
 pandas
 Pillow
 scikit-learn
+joblib

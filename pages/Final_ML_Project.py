@@ -71,9 +71,10 @@ if uploaded_file is not None:
     results = model.predict(source=temp_path)
 
     # แปลง BGR → RGB → PIL
-    annotated_img = results[0].plot()
-    annotated_img_rgb = cv2.cvtColor(annotated_img, cv2.COLOR_BGR2RGB)
-    annotated_img_pil = Image.fromarray(annotated_img_rgb)
+    annotated_img = results[0].plot()           # NumPy array
+    annotated_img = cv2.cvtColor(annotated_img, cv2.COLOR_BGR2RGB)
+    annotated_img_pil = Image.fromarray(annotated_img)
+    st.image(annotated_img_pil)
 
     # แสดงรูปซ้าย-ขวา
     col1, col2 = st.columns(2)
