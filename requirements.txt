@@ -1,8 +1,13 @@
-streamlit
-ultralytics
-opencv-python-headless
-joblib
-numpy
-pandas
+# --- Web App ---
+streamlit==1.37.0
 Pillow
-scikit-learn
+
+# --- Machine Learning ---
+ultralytics==8.2.85
+scikit-learn==1.5.2
+joblib
+pandas
+numpy<2.3.0
+
+# --- Image Processing (Headless) ---
+opencv-python-headless==4.9.0.80
