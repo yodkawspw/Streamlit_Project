@@ -1,5 +1,12 @@
-# streamlit_app.py
+# --------------------------
+# Final_ML_Project.py
+# --------------------------
+
 import streamlit as st
+
+# ---------- ตั้งค่า Streamlit ----------
+st.set_page_config(page_title="Image Detection", page_icon="🔎", layout="centered")
+
 from PIL import Image
 import tempfile
 import os
@@ -18,9 +25,6 @@ except Exception as e:
     st.stop()
 
 import cv2  # import หลังจาก YOLO จะปลอดภัยกว่า
-
-# ---------- ตั้งค่า Streamlit ----------
-st.set_page_config(page_title="Image Detection", page_icon="🔎", layout="centered")
 
 # ---------- Background Image & CSS ----------
 st.markdown("""
